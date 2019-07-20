@@ -1,0 +1,4 @@
+class WebScraper
+
+
+end
