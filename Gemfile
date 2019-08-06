@@ -40,7 +40,7 @@ group :development, :test do
     gem 'capybara'
     gem 'launchy'
     gem 'nokogiri'
-    
+    gem 'geocoder'
 end
 
 group :development do
