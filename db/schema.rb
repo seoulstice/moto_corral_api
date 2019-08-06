@@ -10,15 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_06_210255) do
+ActiveRecord::Schema.define(version: 2019_08_06_210547) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "corrals", force: :cascade do |t|
     t.string "address"
-    t.decimal "lat", precision: 10, scale: 6
-    t.decimal "long", precision: 10, scale: 6
+    t.decimal "latitude", precision: 10, scale: 6
+    t.decimal "longitude", precision: 10, scale: 6
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "city"
