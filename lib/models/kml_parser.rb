@@ -1,29 +1,27 @@
 require 'nokogiri'
 require 'open-uri'
-# require 'geocoder'
 
 class KMLParser
-
-    doc = Nokogiri::XML(open("https://www.google.com/maps/d/u/0/kml?mid=1Dq-upvAE94-uN4aLTgO9mKSNwbI&forcekml=1"))
-
-    doc.css("//Placemark ExtendedData").each do |place|
-        # address
-        hash =  {
-                    # address: "",
-                    # city: "",
-                    # state: "",
-                    # zip: "",
-                    # side: ""
-                }
-        hash[:address] = place.css('Data')[0].text.strip
-        hash[:city]    = place.css('Data')[1].text.strip
-        hash[:state]   = place.css('Data')[2].text.strip
-        hash[:country] = place.css('Data')[3].text.strip
-        hash[:zip]     = place.css('Data')[4].text.strip.to_i
-        hash[:side]    = place.css('Data')[5].text.strip
-        binding.pry
-
+    attr_reader :data_array
+    def initialize(uri)
+        @uri = uri
+        @data_array = []
     end
 
+    def load_file
+        Nokogiri::XML(open(@uri))
+    end
 
+    def parse_kml(document)
+        document.css("//Placemark ExtendedData").each do |place|
+            data =  {}
+            data[:address] = place.css('Data')[0].text.strip
+            data[:city]    = place.css('Data')[1].text.strip
+            data[:state]   = place.css('Data')[2].text.strip
+            data[:country] = place.css('Data')[3].text.strip
+            data[:zip]     = place.css('Data')[4].text.strip.to_i
+            data[:side]    = place.css('Data')[5].text.strip
+            data_array << data
+        end
+    end
 end
