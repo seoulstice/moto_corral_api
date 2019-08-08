@@ -1,3 +1,15 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+    namespace :api do
+        namespace :v1 do
+            namespace :corrals do
+
+                controller :closest do
+                    get '/closest_corral' => :show
+                    get '/closest_corrals' => :index
+                end
+
+            end
+            resources :corrals, only: [:show, :index]
+        end
+    end
 end
