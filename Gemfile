@@ -41,6 +41,7 @@ group :development, :test do
     gem 'launchy'
     gem 'nokogiri'
     gem 'geocoder'
+    gem 'geokit-rails'
 end
 
 group :development do
