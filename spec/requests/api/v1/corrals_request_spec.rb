@@ -9,14 +9,14 @@ describe 'Corrals API' do
 
             expect(response).to be_successful
 
-            corrals = JSON.parse(response.body)
-
+            corrals = JSON.parse(response.body, symbolize_names: true)
+            binding.pry
             expect(corrals.count).to eq(3)
         end
-
+        
         it 'returns one Corral' do
             id = create(:corral).id
-
+            
             get "/api/v1/corrals/#{id}"
             
             corral = JSON.parse(response.body, symbolize_names: true)
