@@ -10,7 +10,7 @@ describe 'Corrals API' do
             expect(response).to be_successful
 
             corrals = JSON.parse(response.body, symbolize_names: true)
-            binding.pry
+
             expect(corrals.count).to eq(3)
         end
         
