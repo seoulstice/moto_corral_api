@@ -5,7 +5,6 @@ class ApplicationController < ActionController::API
 
     def render_not_found_response
       render json: { message: "Not found", code: "not_found" }, status: :not_found
-      binding.pry
     end
 
 end
