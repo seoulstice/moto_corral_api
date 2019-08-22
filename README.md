@@ -1,30 +1,28 @@
-# Moto Corral Finder [![Build Status](https://travis-ci.com/seoulstice/moto_corral_finder.svg?branch=master)](https://travis-ci.com/seoulstice/moto_corral_finder)
+# Moto Corral API [![Build Status](https://travis-ci.org/seoulstice/moto_corral_api.svg?branch=master)](https://travis-ci.org/seoulstice/moto_corral_api)
+Moto Corral API is a Rails API built with the intention of being used in conjunction with the Moto Corral Finder frontend application.  The API serves up motorcycle parking [corral](http://www.philapark.org/motorcycle-scooter-parking/) data endpoints using data periodically scraped from a Google Maps layer of KML data.  That data is then parsed using [Nokogiri](https://nokogiri.org) and saved into a PostgreSQL database.  Corral data is searchable by distance from a starting point location or by the User's current location using [Geokit](https://github.com/geokit/geokit) to query the database by distance.  
+## Setup & Installation  
+Fork the Moto Corral API repository and clone it into a directory of your choosing. 
+`https://github.com/seoulstice/moto_corral_api.git`  
+ 
+Move into the moto corral api directory and bundle.  
+`cd moto_corral_api`  
+`bundle install`  
+ 
+From there you will need to set up the database:  
+`rails db:create db:migrate`  
+ 
+You will then need to populate your database with data provided by the Philadelphia Parking Authority using a built-in rake task.  Run the following command in the command line:  
+`rake load_database`  
+ 
+ You can check to ensure the data was imported correctly by entering the Rails console and ensuring each table is not blank:  
 
-### Purpose
-The Philadelphia Parking Authority's website displaying [motorcycle parking corrals](http://www.philapark.org/motorcycle-scooter-parking/) is not very user friendly, nor does it offer a way for a User to search for a nearby corral based on the Users current location.  
-
-The purpose of Moto Corral Finder is to create a consumable API which will be populated by data returned from periodically scraping the Philadelphia Parking Authority website for parking corral data.  This Rails API will be paired with a Vue.js frontend to allow a User to search for motorcycle parking corrals in two ways:  
-1. Finding the closest parking corral from the User's current location.
-2. Finding the closest parking corral from an address.
-
-
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```
+rails c  
+Corral.all  
+```  
+If the data is not there, reset your database and try the rake task again: 
+```  
+rake db:reset  
+rake load_database  
+```
+## Testing
