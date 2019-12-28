@@ -3,8 +3,7 @@ class ApplicationController < ActionController::API
 
   private
 
-    def render_not_found_response
-      render json: { message: "Not found", code: "not_found" }, status: :not_found
-    end
-
+  def render_not_found_response
+    render json: { message: "Not found", code: "not_found" }, status: :not_found
+  end
 end

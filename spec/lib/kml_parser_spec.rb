@@ -1,11 +1,9 @@
-require 'rails_helper'
-require './lib/models/kml_parser'
+require "rails_helper"
 
-RSpec.describe KMLParser, type: :model do
-  it 'exists' do
-    parser = KMLParser.new("https://www.google.com/maps/d/u/0/kml?mid=1Dq-upvAE94-uN4aLTgO9mKSNwbI&forcekml=1")
-    expect(parser).to be_instance_of(KMLParser)
+RSpec.describe KmlParser, type: :model do
+  it "exists" do
+    parser = KmlParser.new(GOOGLE_MAPS_URL)
+
+    expect(parser).to be_instance_of(KmlParser)
   end
-
-    
 end

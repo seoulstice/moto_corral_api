@@ -1,11 +1,13 @@
-class Api::V1::CorralsController < ApplicationController
+module Api
+  module V1
+    class CorralsController < ApplicationController
+      def show
+        render json: Corral.find(params[:id])
+      end
 
-  def show
-    render json: Corral.find(params[:id])
+      def index
+        render json: Corral.all
+      end
+    end
   end
-
-  def index
-    render json: Corral.all
-  end
-
 end

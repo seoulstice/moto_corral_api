@@ -7,6 +7,6 @@ FactoryBot.define do
     state { Faker::Address.state }
     country { Faker::Address.country }
     zip { Faker::Address.zip }
-    side { "North Side"}
+    side { "North Side" }
   end
 end
