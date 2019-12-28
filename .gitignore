@@ -21,3 +21,10 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+ 
+# Ignore inherited rubocop config
+.rubocop-https*
+ 
+# Ignore vim's swap files
+.*.sw?
+

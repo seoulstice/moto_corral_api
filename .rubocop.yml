@@ -1,0 +1,31 @@
+require:
+  - rubocop-rails
+  - rubocop-performance
+
+inherit_from: 
+  - https://raw.githubusercontent.com/thoughtbot/guides/master/style/ruby/.rubocop.yml
+
+AllCops:
+  Exclude:
+    - 'db/schema.rb'
+    - 'bin/**/*'
+    - 'node_modules/**/*'
+    - 'javascript/**/*'
+    - 'lib/tasks/auto_annotate_models.rake'
+    - 'vendor/**/*' # For CI
+
+Metrics/BlockLength:
+  CountComments: true  # count full line comments?
+  Max: 25
+  ExcludedMethods: []
+  Exclude:
+    - "spec/**/*"
+    - "config/environments/*"
+    - "config/initializers/*"
+    - "config/routes.rb"
+
+Layout/LineLength:
+  IgnoredPatterns: ['\A#']
+
+Rails/BulkChangeTable:
+  Enabled: false
